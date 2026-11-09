@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Қазақстанның халықаралық жетістіктері</title>
+<style>
+:root{--bg:#f4fafc;--ink:#0b2a35;--muted:#4b6670;--card:#fff;--line:#cfe3ea;--sky:#00afca;--gold:#fec50c;--btn:#0b2a35;--btnt:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08171d;--ink:#e6f4f8;--muted:#9bb7c1;--card:#0f2630;--line:#1d3e4b;--btn:#fec50c;--btnt:#08171d}}
+:root[data-theme="dark"]{--bg:#08171d;--ink:#e6f4f8;--muted:#9bb7c1;--card:#0f2630;--line:#1d3e4b;--btn:#fec50c;--btnt:#08171d}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Noto Sans",Roboto,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding:20px 16px 48px}
+.hero{padding:28px 0 20px}
+.tag{display:inline-block;font-size:13px;padding:4px 12px;border-radius:99px;background:var(--gold);color:#3b2d00;font-weight:600}
+h1{font-size:clamp(28px,6vw,52px);line-height:1.1;margin:14px 0 10px;letter-spacing:-.02em}
+.task{color:var(--muted);max-width:680px;margin:0;font-size:16px}
+.tl{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+@media(min-width:800px){.tl{grid-template-columns:96px 1fr}}
+.years{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
+.years::-webkit-scrollbar{display:none}
+@media(min-width:800px){.years{flex-direction:column;overflow:visible;position:sticky;top:16px;align-self:start}}
+.years button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:9px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.25s}
+.years button[aria-current="true"]{background:var(--btn);color:var(--btnt);border-color:var(--btn)}
+.panel{display:grid;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;animation:in .4s ease}
+@media(min-width:800px){.panel{grid-template-columns:1.1fr 1fr;padding:32px;align-items:center}}
+@keyframes in{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none}}
+.badge{display:inline-block;font-size:12px;padding:3px 10px;border-radius:99px;background:var(--line);color:var(--ink)}
+.yr{font-size:clamp(44px,10vw,88px);font-weight:700;line-height:1;margin:10px 0 6px;letter-spacing:-.03em;color:var(--sky)}
+h2{font-size:22px;margin:0 0 8px;line-height:1.25}
+.panel p{margin:0 0 12px;color:var(--muted)}
+.proof{border-left:4px solid var(--gold);padding:8px 12px;background:var(--bg);border-radius:0 10px 10px 0;color:var(--ink)!important}
+.art{border-radius:14px;overflow:hidden;background:#00afca}
+.art svg{display:block;width:100%;height:auto}
+.nav{display:flex;gap:10px;margin-top:14px}
+.nav button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:10px;font:inherit;cursor:pointer}
+.main{margin-top:28px;background:linear-gradient(135deg,#00afca,#0083a0);color:#fff;border-radius:20px;padding:24px}
+.main h3{margin:0 0 8px;font-size:20px;color:var(--gold)}
+.main p{margin:0;font-size:17px}
+footer{margin-top:18px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<span class="tag">8-тапсырма · 59-бет</span>
+<h1>Қазақстанның халықаралық жетістіктері</h1>
+<p class="task">Тәуелсіздік жылдарындағы елдің әлемдік деңгейдегі жетістіктерін бейнелейтін иллюстрациялар. Жыл бойынша таңдап, суреттен негізгі ойды дәлелдеңіз.</p>
+</header>
+<main>
+<div class="tl">
+<div class="years" id="years" role="tablist" aria-label="Жылдар"></div>
+<div>
+<article class="panel" id="panel" aria-live="polite"></article>
+<div class="nav"><button id="prev" type="button">← Алдыңғы</button><button id="next" type="button">Келесі →</button></div>
+</div>
+</div>
+<section class="main">
+<h3>Негізгі ой</h3>
+<p>Тәуелсіздік жылдарында Қазақстан бейбітшілік, ынтымақтастық және ашықтық саясаты арқылы халықаралық аренада сенімді серіктес ретінде танылды.</p>
+</section>
+</main>
+<footer>Дереккөздер: ресми мәліметтер мен қосымша әдебиет. Деректерді мұғалім ұсынған материалмен салыстырып тексеріңіз.</footer>
+</div>
+<script>
+var D=[
+["1991","Қауіпсіздік","Тәуелсіздіктің алғашқы қадамы","29 тамызда Семей ядролық сынақ полигоны жабылды, 16 желтоқсанда Қазақстан өзін тәуелсіз мемлекет деп жариялады.","Жас мемлекет алғашқы күннен бейбітшілік жолын таңдады."],
+["1992","Дипломатия","БҰҰ-ға мүшелік","2 наурызда Қазақстан Біріккен Ұлттар Ұйымының мүшесі болды. Ел әлемдік қауымдастықта тең құқықты мемлекет ретінде танылды.","Содан бері ел көптеген мемлекетпен дипломатиялық байланыс орнатты."],
+["1995","Қауіпсіздік","Ядролық қарудан бас тарту","1994 жылы Қазақстан Ядролық қаруды таратпау туралы шартқа қосылды, 1995 жылға қарай елден барлық ядролық оқтұмсықтар шығарылды. Ол әлемдегі төртінші ірі арсенал болатын.","Ел ерікті түрде ядролық қарудан бас тартқан бірегей үлгі көрсетті."],
+["2002","Дипломатия","АӨСШК бастамасы","Қазақстанның бастамасымен құрылған Азиядағы өзара іс-қимыл және сенім шаралары жөніндегі кеңестің алғашқы саммиті Алматыда өтті.","Бастама 1992 жылы БҰҰ мінберінен ұсынылып, Азия елдерін диалогқа біріктірді."],
+["2010","Дипломатия","ЕҚЫҰ төрағалығы","Қазақстан Еуропадағы қауіпсіздік және ынтымақтастық ұйымына төрағалық еткен алғашқы посткеңестік ел болды. Астанада ұйымның саммиті өтті.","Саммит 11 жылдан кейін алғаш рет шақырылып, елдің беделін көрсетті."],
+["2015","Экономика","ДСҰ-ға кіру","30 қарашада Қазақстан Дүниежүзілік сауда ұйымының 162-мүшесі болды.","Отандық өнім үшін әлемдік нарықтың есігі кеңірек ашылды."],
+["2017","Ғылым · Экономика","Астанадағы ЭКСПО-2017","«Болашақ энергиясы» тақырыбындағы халықаралық көрмеге 100-ден астам ел қатысты.","Қазақстан жасыл энергия мәселесін көтеретін әлемдік алаңды өткізді."],
+["2017–18","Қауіпсіздік","БҰҰ Қауіпсіздік Кеңесінде","Қазақстан Орталық Азиядан алғаш рет БҰҰ Қауіпсіздік Кеңесінің тұрақты емес мүшесі болып сайланды.","Әлемдік бейбітшілік пен қауіпсіздік мәселелерін шешуге елдің дауысы қосылды."]
+];
+var G='#fec50c',W='#fff';
+function art(i){var s='<svg viewBox="0 0 220 160" role="img" aria-label="Иллюстрация"><rect width="220" height="160" fill="#00afca"/>',k,a;
+if(i==0){s+='<circle cx="110" cy="80" r="26" fill="'+G+'"/>';for(k=0;k<16;k++){a=k*Math.PI/8;s+='<line x1="'+(110+34*Math.cos(a))+'" y1="'+(80+34*Math.sin(a))+'" x2="'+(110+48*Math.cos(a))+'" y2="'+(80+48*Math.sin(a))+'" stroke="'+G+'" stroke-width="4" stroke-linecap="round"/>'}}
+if(i==1){s+='<g fill="none" stroke="'+W+'" stroke-width="4"><circle cx="110" cy="80" r="48"/><ellipse cx="110" cy="80" rx="20" ry="48"/><line x1="62" y1="80" x2="158" y2="80"/><path d="M70 55h80M70 105h80"/></g>'}
+if(i==2){s+='<g fill="none" stroke="'+W+'" stroke-width="4"><ellipse cx="110" cy="80" rx="48" ry="18"/><ellipse cx="110" cy="80" rx="48" ry="18" transform="rotate(60 110 80)"/><ellipse cx="110" cy="80" rx="48" ry="18" transform="rotate(120 110 80)"/></g><circle cx="110" cy="80" r="8" fill="'+G+'"/><line x1="64" y1="128" x2="156" y2="32" stroke="'+G+'" stroke-width="8" stroke-linecap="round"/>'}
+if(i==3){s+='<g fill="none" stroke="'+W+'" stroke-width="5"><circle cx="82" cy="80" r="34"/><circle cx="110" cy="80" r="34" stroke="'+G+'"/><circle cx="138" cy="80" r="34"/></g>'}
+if(i==4){for(k=0;k<6;k++){a=k*Math.PI/3;s+='<circle cx="'+(110+46*Math.cos(a))+'" cy="'+(80+46*Math.sin(a))+'" r="11" fill="'+W+'"/><line x1="110" y1="80" x2="'+(110+46*Math.cos(a))+'" y2="'+(80+46*Math.sin(a))+'" stroke="'+W+'" stroke-width="2"/>'}s+='<circle cx="110" cy="80" r="16" fill="'+G+'"/>'}
+if(i==5){for(k=0;k<5;k++)s+='<rect x="'+(48+k*28)+'" y="'+(120-16*(k+1)-6)+'" width="20" height="'+(16*(k+1)+6)+'" rx="3" fill="'+(k==4?G:W)+'"/>';s+='<path d="M50 70L100 50l25 12 45-35" fill="none" stroke="'+G+'" stroke-width="4" stroke-linecap="round"/>'}
+if(i==6){s+='<g fill="none" stroke="'+W+'" stroke-width="3"><circle cx="110" cy="72" r="44"/><ellipse cx="110" cy="72" rx="44" ry="16"/><ellipse cx="110" cy="72" rx="16" ry="44"/></g><path d="M80 134h60M92 116l-8 18M128 116l8 18" stroke="'+G+'" stroke-width="5" stroke-linecap="round"/>'}
+if(i==7){for(k=0;k<15;k++){a=k*2*Math.PI/15;s+='<circle cx="'+(110+50*Math.cos(a))+'" cy="'+(80+50*Math.sin(a))+'" r="'+(k<5?9:5)+'" fill="'+(k<5?G:W)+'"/>'}s+='<circle cx="110" cy="80" r="14" fill="none" stroke="'+W+'" stroke-width="3"/>'}
+return s+'</svg>'}
+var cur=0,yb=document.getElementById('years'),pn=document.getElementById('panel');
+D.forEach(function(d,i){var b=document.createElement('button');b.type='button';b.textContent=d[0];b.setAttribute('role','tab');b.onclick=function(){go(i)};yb.appendChild(b)});
+function go(i){cur=Math.max(0,Math.min(D.length-1,i));var d=D[cur];
+pn.style.animation='none';pn.offsetHeight;pn.style.animation='';
+pn.innerHTML='<div><span class="badge">'+d[1]+'</span><div class="yr">'+d[0]+'</div><h2>'+d[2]+'</h2><p>'+d[3]+'</p><p class="proof"><b>Дәлел:</b> '+d[4]+'</p></div><div class="art">'+art(cur)+'</div>';
+Array.prototype.forEach.call(yb.children,function(b,j){b.setAttribute('aria-current',j==cur?'true':'false');if(j==cur&&b.scrollIntoView)try{b.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}catch(e){}})}
+document.getElementById('prev').onclick=function(){go(cur-1)};
+document.getElementById('next').onclick=function(){go(cur+1)};
+document.addEventListener('keydown',function(e){if(e.key=='ArrowRight')go(cur+1);if(e.key=='ArrowLeft')go(cur-1)});
+go(0);
+</script>
+</body>
+</html>
